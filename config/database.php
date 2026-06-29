@@ -2,10 +2,19 @@
 // ============================================================
 // KONFIGURASI DATABASE
 // ============================================================
-define('DB_HOST', 'localhost');
-define('DB_USER', 'root');
-define('DB_PASS', '');
-define('DB_NAME', 'db_sispak_bidan');
+define('DB_HOST', getenv('DB_HOST') ?: 'localhost');
+define('DB_USER', getenv('DB_USER') ?: 'root');
+define('DB_PASS', getenv('DB_PASS') ?: '');
+define('DB_NAME', getenv('DB_NAME') ?: 'db_sispak_bidan');
+define('DB_PORT', getenv('DB_PORT') ?: 3306);
+
+$conn = new mysqli(
+    DB_HOST,
+    DB_USER,
+    DB_PASS,
+    DB_NAME,
+    DB_PORT
+);
 
 // Koneksi Database
 $conn = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
